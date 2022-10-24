@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
+            rel="stylesheet"
+        />
+
+    <title>listAlldevices</title>
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>        
+        <style>
+            *，
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: inherit;
+            }
+
+            html {
+                font-size: 62.5%;
+                box-sizing: border-box;
+            }
+
+            body {
+                padding: 5rem 5rem 10rem;
+                line-height: 1.7;
+                font-family: 'Nunito Sans', sans-serif;
+                color: #555;
+                min-height: 100vh;
+                background: linear-gradient(to bottom right, #808080, #00e3ae);
+            }
+
+            h1 {
+                font-family: 'Megrim', sans-serif;
+                font-size: 6rem;
+                color: white;
+                transform: skewY(-5deg);
+                text-align: center;
+                position: relative;
+                word-spacing: 3px;
+            }
+
+            h1::before {
+                content: '';
+                display: block;
+                height: 65%;
+                width: 49%;
+                position: absolute;
+                top: 105%;
+                left: 50%;
+                background: linear-gradient(to bottom, #008080, #00e3ae);
+                opacity: 0.8;
+                z-index: -1;
+                transform: skewY(370deg) translate(-50%, -50%);
+            }
+
+            .container {
+                width: 95rem;
+                margin: 0 auto;
+            }
+
+            .homeAppliance_introduction {
+                padding: 5rem 6rem;
+                font-size: 1.6rem;
+                line-height: 1.8;
+            }
+
+            .topMenu ol {
+                list-style-type: none;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 5px;
+                margin-top: 0px;
+                padding: 0;
+                overflow: hidden;
+                background-color: var(--main-theme-color);
+                border-radius: 5px;
+            }
+
+            .topMenu li {
+                float: left;
+            }
+
+            .topMenu li a,
+            .topMenu .dropbtn {
+                display: inline-block;
+                border-bottom: 5px solid;
+                border-color: transparent;
+                color: whitesmoke;
+                text-align: center;
+                font-size: 1.6em;
+                padding: 14px 16px;
+                font-family: Calibri;
+                text-decoration: none;
+                margin-left: 5px;
+                align-self: stretch;
+            }
+
+            .topMenu li a:hover,
+            .topMenu .dropdown:hover .dropbtn {
+                border-color: greenyellow;
+            }
+
+            .topMenu .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        </style>
+</head>
+
+    <body>
+        <div class="topMenu">
+            <nav>
+                <ol>
+                    <li>
+                        <a href="/"> HOME PAGE </a>
+                    </li>
+
+                    <li class="dropdown">
+                        <div class="dropdown-menu">
+                            <a href="/addPage">ADD NEW DEVICES </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/updatePage">
+                            UPDATE DEVICES
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/about"> ABOUT THE AUTHOR</a>
+                    </li>
+                    <li>
+                        <a href="/devices"> THE SOFTWARE STATUS </a>
+                    </li>
+
+                    <li>
+                        <a href="/register"> WHO ARE YOU </a>
+                    </li>
+
+        
+
+                    <li>
+                        <a href="/deletePage"> DELETE A DEVICE</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+
+<div id="showPage" class="containter">
+        <!-- a list of devices and could chose from them -->
+        <form name="deviceForm" action="/showDashboard" method="GET">
+            <div class="form-group">
+                <label for="deviceName">Select a device here</label>
+                <select class="form-control" name="deviceName" id="deviceName">
+                <% devices.forEach(function(device){ %>
+                    <option value="<%= device.name%>"><%= device.name%></option>
+                <% }) %>  
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+        </form>
+       
+        <%if (selectedDevice !== undefined) { %> 
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Device ID</th>
+                <th scope="col">Device Name</th>
+                <% Object.keys(selectedDevice[0].fields).forEach(function(field_name){ %>
+                    <th scope="col"><%= field_name%></th>
+                <% }) %>
+              </tr>
+            </thead>
+            <tbody>
+                <% selectedDevice.forEach(function(device){ %>
+                    <tr>
+                        <td scope="col"><%= device.id%></th>
+                        <td scope="col"><%= device.name%></th>
+                        <% Object.values(device.fields).forEach(function(field_value){ %>
+                            <th scope="col"><%= field_value%></th>
+                        <% }) %>
+                    </tr>
+                <% }) %>  
+            </tbody>
+        </table>
+        <%}%>
+    </div>
+</body>
+</html>
