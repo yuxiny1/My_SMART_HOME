@@ -1,5 +1,5 @@
 # My_SMART_HOME
-# DYNAMIC WEB PAGE
+# A FULL STACK WEB APP
 
     my smart home is a project that I have done in my second year. It is a smart home system that can control the light and temperature in the house.
                         You will see a list of all the home appliance here, and you could
