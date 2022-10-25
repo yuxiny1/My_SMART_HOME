@@ -7,3 +7,4 @@
                         functions including adding device, editing and delete devices.
                         
                         
+<img width="1290" alt="mysmarthome_homepage" src="https://user-images.githubusercontent.com/62050298/197828932-f4be8114-e95f-4b08-a8e2-50710cc813f7.png">
