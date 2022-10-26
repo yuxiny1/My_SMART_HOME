@@ -1,6 +1,6 @@
 //index file, connnect to the server
 const util = require('util');
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();

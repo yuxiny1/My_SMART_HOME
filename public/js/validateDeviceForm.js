@@ -52,6 +52,5 @@ function validateDeviceForm() {
         volumeInput.focus();
         return false;
     }
-
     return true;
 }
